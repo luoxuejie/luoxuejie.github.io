@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>官网作品展</title>
+		<style>
+			*{ margin: 0; padding: 0;}
+			li{ list-style: none;}
+			body{ background: url("img/30.JPG");}
+			#box{ width: 700px; height: 358px; border: 5px solid #fff; background: mediumaquamarine; margin: 100px auto; position: relative; overflow: hidden;}
+			#box ul{ position: absolute; left: 0; top:50%; margin-top: -90px;}
+			#box ul li{ width: 260px; height: 179px; position: relative; float: left;}
+			#box ul li img{ width: 260px; height: 179px; position: absolute; left: 0; top: 0;}
+			#box ul li span{ width: 100px; height: 100px; position: absolute; left: 50%; top: 50%; margin-left: -50px; margin-top: -50px; font-size: 30px; text-align: center; line-height: 100px; background: #fff; font-weight: bold;}
+		</style>
+		<script src="move1.js"></script>
+		<script src="Tween.js"></script>
+		<script>
+			window.onload=function(){var oBox=document.getElementById("box");var oUl=oBox.children[0];var aLi=oUl.children;var aImg=oBox.getElementsByTagName("img");var divC=oBox.offsetWidth/2-1;oUl.style.width=aLi[0].offsetWidth*aLi.length+"px";document.onmousedown=function(ev){var oEvent=ev||event;var disX=oEvent.clientX-oUl.offsetLeft;document.onmousemove=function(ev){var oEvent=ev||event;var L=oEvent.clientX-disX;if(L>=divC-0.5*aLi[0].offsetWidth){L=divC-0.5*aLi[0].offsetWidth}if(L<=divC-(aLi.length-0.5)*aLi[0].offsetWidth){L=divC-(aLi.length-0.5)*aLi[0].offsetWidth}setSize();oUl.style.left=L+"px"};document.onmouseup=function(){document.onmousemove=null;document.onmouseup=null};return false};oUl.style.left=divC-(aLi[0].offsetWidth/2*(1+0.5))+"px";function setSize(){for(var i=0;i<aLi.length;i++){var l=Math.abs(divC-(aLi[i].offsetLeft+aLi[i].offsetWidth/2+oUl.offsetLeft));var scale=(1-l/500).toFixed(2);scale<0.5&&(scale=0.5);console.log(scale);aImg[i].style.width=scale*520+"px";aImg[i].style.height=scale*358+"px";aImg[i].style.marginLeft=-(aImg[i].offsetWidth-260)/2+"px";aImg[i].style.marginTop=-(aImg[i].offsetHeight-179)/2+"px";aLi[i].style.zIndex=scale*1000}}setSize()};
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+				<li><img src="../pic/0.jpg" alt="" /></li>
+				<li><img src="../pic/1.jpg" alt="" /></li>
+				<li><img src="../pic/2.jpg" alt="" /></li>
+				<li><img src="../pic/3.jpg" alt="" /></li>
+				<li><img src="../pic/4.jpg" alt="" /></li>
+				<li><img src="../pic/5.jpg" alt="" /></li>
+				<li><img src="../pic/9.jpg" alt="" /></li>
+				<li><img src="../pic/7.jpg" alt="" /></li>
+				<li><img src="../pic/8.jpg" alt="" /></li>
+			</ul>
+		</div>
+	</body>
+</html>

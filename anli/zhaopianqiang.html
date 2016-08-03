@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>照片墙</title>
+		<style>
+			*{ margin: 0; padding: 0;}
+			body{ text-align: center; background: url("img/39.JPG")center;}
+			#box{ width: 582px; height: 582px; position: relative; margin: 0 auto; background: #fff;}
+			#box dd{overflow: hidden; width: 180px; height: 180px; border: 4px solid deeppink; margin: 3px; float: left;}
+			#box dd.on{ border: 4px dashed olivedrab;}
+			#box dd img{ width: 180px; height: 180px;}
+			input{ width: 80px; height: 30px; font-size: 16px; padding: 5px; margin: 10px;}
+		</style>
+		<script>
+			window.onload=function(){var oBtn=document.getElementById("btn");var oBox=document.getElementById("box");var aDd=oBox.children;var zindex=10;var arr=[];for(var i=0;i<aDd.length;i++){arr.push({left:aDd[i].offsetLeft,top:aDd[i].offsetTop})}oBtn.onclick=function(){arr.sort(function(){return Math.random()-0.5});for(var i=0;i<aDd.length;i++){aDd[i].style.left=arr[i].left+"px";aDd[i].style.top=arr[i].top+"px";aDd[i].style.position="absolute";aDd[i].style.margin=0;aDd[i].index=i}};for(var i=0;i<aDd.length;i++){aDd[i].style.left=arr[i].left+"px";aDd[i].style.top=arr[i].top+"px";aDd[i].style.position="absolute";aDd[i].style.margin=0}for(var i=0;i<aDd.length;i++){drag(aDd[i]);aDd[i].index=i}function collTest(obj,obj2){var l=obj.offsetLeft;var r=obj.offsetLeft+obj.offsetWidth;var t=obj.offsetTop;var b=obj.offsetTop+obj.offsetHeight;var l2=obj2.offsetLeft;var r2=obj2.offsetLeft+obj2.offsetWidth;var t2=obj2.offsetTop;var b2=obj2.offsetTop+obj2.offsetHeight;if(l<r2&&r>l2&&t<b2&&b>t2){return true}else{return false}}function drag(obj){obj.onmousedown=function(ev){var oEvent=ev||event;var disX=oEvent.clientX-obj.offsetLeft;var disY=oEvent.clientY-obj.offsetTop;document.onmousemove=function(ev){var oEvent=ev||event;var l=oEvent.clientX-disX;var t=oEvent.clientY-disY;var oNear=findNear(obj);for(var i=0;i<aDd.length;i++){aDd[i].className=""}if(oNear){oNear.className="on"}obj.style.zIndex=zindex++;obj.style.left=l+"px";obj.style.top=t+"px"};document.onmouseup=function(){document.onmousemove=null;document.onmouseup=null;var oNear=findNear(obj);if(oNear){obj.style.left=arr[oNear.index].left+"px";obj.style.top=arr[oNear.index].top+"px";oNear.style.left=arr[obj.index].left+"px";oNear.style.top=arr[obj.index].top+"px";var car;car=oNear.index;oNear.index=obj.index;obj.index=car;oNear.className=""}else{obj.style.left=arr[obj.index].left+"px";obj.style.top=arr[obj.index].top+"px"}};return false}}function dis(obj,obj2){var a=obj2.offsetLeft-obj.offsetLeft;var b=obj2.offsetTop-obj.offsetTop;return Math.sqrt(a*a+b*b)}function findNear(obj){var iMin=99999999999999;var iMinIndex=-1;for(var i=0;i<aDd.length;i++){if(obj==aDd[i]){continue}if(collTest(obj,aDd[i])){var dis1=dis(obj,aDd[i]);if(dis1<iMin){iMin=dis1;iMinIndex=i}}}if(iMinIndex==-1){return null}else{return aDd[iMinIndex]}}};
+		</script>
+	</head>
+	<body>
+		<input type="button" value="随意换" id="btn"/>
+		<dl id="box">
+			<dd><img src="img/img2/0.JPG" alt="" /></dd>
+			<dd><img src="img/img2/1.JPG" alt="" /></dd>
+			<dd><img src="img/img2/2.JPG" alt="" /></dd>
+			<dd><img src="img/img2/3.JPG" alt="" /></dd>
+			<dd><img src="img/img2/4.JPG" alt="" /></dd>
+			<dd><img src="img/img2/5.JPG" alt="" /></dd>
+			<dd><img src="img/img2/6.JPG" alt="" /></dd>
+			<dd><img src="img/img2/7.JPG" alt="" /></dd>
+			<dd><img src="img/img2/8.JPG" alt="" /></dd>
+		</dl>
+	</body>
+</html>

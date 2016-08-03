@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>判断容器</title>
+		<style>
+			*{ margin: 0; padding: 0; list-style: none;}
+			body{ background: silver;}
+			div{margin-top: 50px;}
+			p{ width: 200px; height: 200px; background: url("../pic/28.jpg")center;  background-size: 200px 200px; position: relative; float: left; border: 5px solid silver; overflow: hidden;}
+			p span{ width: 200px; height: 200px; background: url("img/40.JPG")center; background-size: 200px 200px; position: absolute; left: 200px; top: 0;}
+		</style>
+		<script src="move1.js"></script>
+		<script>
+			function getPos(obj){var l=0;var t=0;while(obj){l+=obj.offsetLeft;t+=obj.offsetTop;obj=obj.offsetParent}return{left:l,top:t}}function findXY(obj,ev){var oEvent=ev||event;var scrollT=document.documentElement.scrollTop||document.body.scrollTop;var scrollL=document.documentElement.scrollLeft||document.body.scrollLeft;var Y=obj.offsetHeight/2+getPos(obj).top-(oEvent.clientY+scrollT);var X=obj.offsetWidth/2+getPos(obj).left-(oEvent.clientX+scrollL);return Math.round((Math.atan2(Y,X)*180/Math.PI+180)/90)%4}window.onscroll=window.onload=function(){var oDiv=document.body.children[0];var oBox=oDiv.children;for(var i=0;i<oBox.length;i++){oBox[i].onmouseover=function(ev){var oEvent=ev||event;var oSon=this.children[0];var oFrom=oEvent.fromElement||oEvent.relatedTarget;if(this.contains(oFrom)){return false}switch(findXY(this)){case 0:console.log("右侧");oSon.style.left=200+"px";oSon.style.top=0;break;case 1:console.log("下");oSon.style.left=0;oSon.style.top=200+"px";break;case 2:console.log("左");oSon.style.left=-200+"px";oSon.style.top=0;break;case 3:console.log("上");oSon.style.left=0;oSon.style.top=-200+"px";break}move(oSon,{left:0,top:0})};oBox[i].onmouseout=function(ev){var oEvent=ev||event;var oSon=this.children[0];var oTo=oEvent.toElement||oEvent.relatedTarget;if(this.contains(oTo)){return false}switch(findXY(this,ev)){case 0:move(oSon,{left:200,top:0});break;case 1:move(oSon,{left:0,top:200});break;case 2:move(oSon,{left:-200,top:0});break;case 3:move(oSon,{left:0,top:-200});break}}}};
+		</script>
+	</head>
+	<body>
+		<div>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+			<p><span></span></p>
+		</div>
+	</body>
+</html>

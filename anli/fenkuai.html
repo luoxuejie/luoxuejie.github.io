@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>分块</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#btn{
+			width: 100px;
+			height: 50px;
+			font-size: 30px;
+			margin: 30px;
+		}
+		#box{
+			width: 700px;
+			height: 400px;
+			background: url(img/img/img/img/img/0.jpg)no-repeat;
+			position: relative;
+			margin: 40px auto;
+		}
+		#box span{
+			position: absolute;
+			background: url(img/img/img/img/img/0.jpg) no-repeat;
+		}
+		body{
+			background: url("img/37.JPG");
+		}
+	</style>
+	<script src="Tween.js"></script>
+	<script>
+		window.onload=function(){var oBtn=document.getElementById("btn");var oBox=document.getElementById("box");var R=4;var C=7;for(var r=0;r<R;r++){for(var c=0;c<C;c++){var aSpan=document.createElement("span");aSpan.style.width=oBox.offsetWidth/C+"px";aSpan.style.height=oBox.offsetHeight/R+"px";oBox.appendChild(aSpan);aSpan.style.left=c*aSpan.offsetWidth+"px";aSpan.style.top=r*aSpan.offsetHeight+"px";aSpan.style.backgroundPosition="-"+c*aSpan.offsetWidth+"px -"+r*aSpan.offsetHeight+"px";aSpan.c=c;aSpan.r=r}}var timer=null;var iNow=0;var bReady=true;oBtn.onclick=function(){if(!bReady){return}bReady=false;var oSpan=oBox.children;iNow++;for(var i=0;i<oSpan.length;i++){(function(index){timer=setTimeout(function(){oSpan[index].style.backgroundImage="url(img/img/img/img/img/"+iNow%3+".jpg)";oSpan[index].style.opacity=0;tween(oSpan[index],{opacity:1});if(oSpan[index].c==C-1&&oSpan[index].r==R-1){bReady=true}},150*(oSpan[index].c+oSpan[index].r))})(i)}}};
+	</script>
+</head>
+<body>
+<input type="button" value="走一个" id="btn"/>
+<div id="box"></div>
+</body>
+</html>

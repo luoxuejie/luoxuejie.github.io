@@ -1,0 +1,1 @@
+var gulp=require("gulp");var uglify=require("gulp-uglify");var concat=require("gulp-concat");var arr=["js/utils.js","js/sprite.js","js/fish.js","js/cannon.js","js/bullet.js","js/coin.js","js/DieFish.js","js/web.js"];gulp.task("game",function(){return gulp.src(arr).pipe(concat("index.min.js")).pipe(uglify()).pipe(gulp.dest("bulid"))});gulp.task("default",["game"]);

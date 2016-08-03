@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>手风琴</title>
+		<style>
+			*{ margin:0; padding:0;}
+			li{ list-style:none;}
+			body{
+				background: url("../pic/222.jpg")center;
+			}
+			#box{
+				width:640px;
+				height:600px;
+				border:5px solid #fff;
+				margin:20px auto;
+				position: relative;
+				overflow: hidden;
+			}
+			#box dd{
+				 width:640px;
+				 cursor:pointer;
+				 position:absolute;
+				 left:0; top:0;
+				 }
+				 #box dd img{
+					 width: 640px;
+					 vertical-align:top;
+				 }
+		</style>
+		<script src="move.js"></script>
+		<script>
+			window.onload=function(){var oBox=document.getElementById("box");var aDd=oBox.children;var oW=600;var w1=50;for(var i=1;i<aDd.length;i++){aDd[i].style.left=oW-(aDd.length-i)*w1+"px"}for(var i=0;i<aDd.length;i++){(function(index){aDd[i].onmouseover=function(){for(var i=0;i<aDd.length;i++){if(i<=index){aDd[i].style.left=w1*i+"px"}else{aDd[i].style.left=oW-(aDd.length-i)*w1+"px"}}}})(i)}};
+		</script>
+	</head>
+	<body>
+		<dl id="box">
+			<dd><img src="img/imgs/0.png" alt=""  /></dd>
+			<dd><img src="img/imgs/1.png" alt=""  /></dd>
+			<dd><img src="img/imgs/2.png" alt=""  /></dd>
+			<dd><img src="img/imgs/3.png" alt=""  /></dd>
+		</dl>
+	</body>
+</html>

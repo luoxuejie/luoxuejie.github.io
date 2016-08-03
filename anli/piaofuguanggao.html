@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>漂浮广告</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: url("img/33.JPG");
+        }
+        #box{
+            width: 210px;
+            height: 210px;
+            position: absolute;
+            border-radius: 50%;
+            left: 0;
+            top: 0;
+            background: url("../pic/33.png");
+
+        }
+    </style>
+    <script>
+        window.onload=function(){var oBox=document.getElementById("box");var spendX=6;var spendY=8;setInterval(function(){var l=oBox.offsetLeft+spendX;var t=oBox.offsetTop+spendY;var clientH=document.documentElement.clientHeight-oBox.offsetHeight;var clientW=document.documentElement.clientWidth-oBox.offsetWidth;if(l<=0){l=0;spendX*=-1}if(t<=0){t=0;spendY*=-1}if(l>=clientW){l=clientW;spendX*=-1}if(t>=clientH){t=clientH;spendY*=-1}oBox.style.left=l+"px";oBox.style.top=t+"px"},30)};
+    </script>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>

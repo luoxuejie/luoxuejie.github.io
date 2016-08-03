@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>碰撞拖拽</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        body{
+            background: url("../pic/22.jpg")center;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        img{
+            width: 200px;
+            height: auto;
+            vertical-align: top;
+        }
+    </style>
+    <script>
+        window.onload=function(){var oBox=document.getElementById("box");var speedX=0;var speedY=0;var lastX=0;var lastY=0;var timer=null;oBox.onmousedown=function(ev){clearInterval(timer);var oEvent=ev||event;var disX=oEvent.clientX-oBox.offsetLeft;var disY=oEvent.clientY-oBox.offsetTop;document.onmousemove=function(ev){var oEvent=ev||event;var ll=oEvent.clientX-disX;var tt=oEvent.clientY-disY;speedX=oEvent.clientX-oBox.offsetLeft;speedY=oEvent.clientY-oBox.offsetTop;lastX=oEvent.clientX;lastY=oEvent.clientY;oBox.style.left=ll+"px";oBox.style.top=tt+"px"};document.onmouseup=function(){document.onmousemove=null;document.inmouseup=null;collision()};return false};function collision(){clearInterval(timer);timer=setInterval(function(){speedY+=3;var l=oBox.offsetLeft+speedX;var t=oBox.offsetTop+speedY;var clientH=document.documentElement.clientHeight-oBox.offsetHeight;var clientW=document.documentElement.clientWidth-oBox.offsetWidth;if(t>=clientH){t=clientH;speedY*=-0.8;speedX*=0.8}if(t<0){t=0;speedY*=-0.8;speedX*=0.8}if(l>=clientW){l=clientW;speedX*=-0.8;speedY*=0.8}if(l<0){l=0;speedX*=-0.8;speedY*=0.8}oBox.style.left=l+"px";oBox.style.top=Math.round(t)+"px";if(Math.abs(speedX)<1){speedX=0}if(Math.abs(speedY)<1){speedY=0}if(Math.round(t)&&Math.random(speedY)==0&&Math.round(speedX)==0){clearInterval(timer)}},30)}};
+    </script>
+</head>
+<body>
+<div id="box"><img src="img/7.png" alt="" /></div>
+</body>
+</html>

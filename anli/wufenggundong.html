@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>无缝滚动</title>
+	<style>
+		*{ margin: 0; padding: 0;}
+		li{ list-style: none;}
+		body{ background: url("img/37.JPG")}
+		#box{width: 572px; height: 210px; margin: 260px auto; position: relative; overflow: hidden; background: #fff;}
+		#box dl{ position: absolute; width: 572px; height: 210px; left: 0;}
+		#box dd{ width: 133px; height: 200px; float: left; margin: 5px;}
+		img{ width: 133px; height: 200px;}
+		#left,#right{ width: 286px; height: 210px; display: inline-block; background: pink; position: absolute; z-index: 22; opacity: 0; filter: alpha(opacity=0);}
+		#right{position: absolute; right: 0;}
+	</style>
+	<script>
+		window.onload=function(){var oBox=document.getElementById("box");var oDl=document.getElementsByTagName("dl")[0];var oLef=document.getElementById("left");var oRig=document.getElementById("right");var l=0;var timer=null;oDl.innerHTML+=oDl.innerHTML;var aDd=oDl.children;oDl.style.width=aDd.length*(aDd[0].offsetWidth+10)+"px";var oW=oDl.offsetWidth/2;function toRig(){clearInterval(timer);timer=setInterval(function(){l+=4;l=(l%oW-oW)%oW;oDl.style.left=l+"px"},30)}function toLef(){clearInterval(timer);timer=setInterval(function(){l-=4;l=l%oW;oDl.style.left=l+"px"},30)}toLef();oLef.onmouseover=function(){toLef()};oRig.onmouseover=function(){toRig()}};
+	</script>
+</head>
+<body>
+<div id="box">
+	<a href="javascript:;" id="left"></a>
+	<a hef="javascript:;" id="right"></a>
+	<dl>
+		<dd><img src="img/1.jpg" alt=""  /></dd>
+		<dd><img src="img/2.jpg" alt=""  /></dd>
+		<dd><img src="img/3.jpg" alt=""  /></dd>
+		<dd><img src="img/4.jpg" alt=""  /></dd>
+	</dl>
+</div>
+</body>
+</html>

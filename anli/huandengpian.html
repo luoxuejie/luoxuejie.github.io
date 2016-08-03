@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>网易幻灯片</title>
+		<style>
+			*{ margin: 0; padding: 0; list-style: none;}
+			body{ background: url("img/34.JPG");}
+			#box{ width: 600px; height: 300px; position: relative; margin: 100px auto; overflow: hidden;}
+			#box ul{ position: absolute; left: 0; top: 0;}
+			#box ul li{ width: 600px; height: 300px; float: left; font-size: 35px; color: orangered; font-family: "microsoft yahei", "微软雅黑", "黑体"; font-weight: bold; text-align: center; line-height: 300px;}
+			#box ol{ width: 430px; position: absolute; left: 50%; bottom: 10px; margin-left: -215px;}
+			#box ol li{ width: 80px; height: 20px; background: #000;float: left; margin: 3px; position: relative;}
+			#box ol span{ width: 80px; height: 20px; background: #fff; position: absolute; left: 0; top: 0;}
+		</style>
+		<script src="move1.js"></script>
+		<script>
+			window.onload=function(){var oBox=document.getElementById("box");var oUl=oBox.children[0];var aLi=oUl.children;var oOl=oBox.children[1];var aBtn=oOl.children;var aSpan=oBox.getElementsByTagName("span");var iCount=0;oUl.style.width=aLi.length*aLi[0].offsetWidth+"px";function next(){for(var i=0;i<aLi.length;i++){aSpan[i].style.width=0;move(aSpan[iCount],{width:80},{type:"linear",end:function(){iCount++;if(iCount==aBtn.length){iCount=0}move(oUl,{left:-iCount*aLi[0].offsetWidth},{type:"ease-in",end:next})}})}}next()};
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+		    	<li style="background:url(../pic/2.jpg)no-repeat center;">人生若只如初见，何事悲风画秋扇。</li>
+		        <li style="background:url(../pic/9.jpg)no-repeat center">等闲变却故人心，却道故人心易变。</li>
+		        <li style="background:url(../pic/8.jpg)no-repeat top;">骊山语罢清宵半，泪雨零铃终不怨。</li>
+		        <li style="background:url(../pic/5.jpg)no-repeat center;">何如薄幸锦衣郎，比翼连枝当日愿。</li>
+		        <li style="background:url(../pic/7.jpg)no-repeat center;">-----纳兰容若《木兰词》</li>
+		    </ul>
+		    <ol>
+		    	<li><span></span></li>
+		        <li><span></span></li>
+		        <li><span></span></li>
+		        <li><span></span></li>
+		        <li><span></span></li>
+		    </ol>
+		</div>
+	</body>
+</html>
